@@ -25,14 +25,14 @@ import { initDevtools } from '@pixi/devtools';
   document.getElementById("pixi-container").appendChild(app.canvas);
   
   //bg
-  const textureBg = await Assets.load("/assets/bg.png");
+  const textureBg = await Assets.load("/assets/img/bg.png");
   const bg = new Sprite(textureBg);
   bg.width = app.screen.width;
   bg.height = app.screen.height;
   app.stage.addChild(bg);
   
   // Load the bunny texture
-  const texture = await Assets.load("/assets/diglett-hide.svg");
+  const texture = await Assets.load("/assets/img/diglett-hide.svg");
   // Create a bunny Sprite
   const diglett = new Sprite(texture);
 
