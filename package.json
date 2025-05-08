@@ -10,7 +10,9 @@
     "dev": "vite"
   },
   "dependencies": {
-    "pixi.js": "^8.8.1"
+    "@pixi-essentials/svg": "^3.0.0",
+    "@pixi/graphics-extras": "^7.4.3",
+    "pixi.js": "^8.9.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

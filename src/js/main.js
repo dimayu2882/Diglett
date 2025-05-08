@@ -1,11 +1,13 @@
 import "../styles/style.css";
-import { Application, Assets, Sprite } from "pixi.js";
+import { Application, Assets, Sprite, Graphics } from "pixi.js";
 import { initDevtools } from '@pixi/devtools';
+
+import bgUrl from '@img/bg.png';
+import diglettUrl from '@img/diglett-hide.png';
 
 (async () => {
   // Create a new application
-  const app = new Application({
-  });
+  const app = new Application();
   
   // Store the application in the global scope for debugging purposes
   globalThis.__PIXI_APP__ = app;
@@ -13,37 +15,34 @@ import { initDevtools } from '@pixi/devtools';
   // Initialize the application
   await app.init({
     background: "#1099bb",
-    resizeTo: window,
     antialias: true,
     transparent: false,
-    
+    autoStart: false,
+    resizeTo: window,
+    sharedTicker: true,
   });
   
   await initDevtools({ app });
+  await  Assets.init();
 
   // Append the application canvas to the document body
   document.getElementById("pixi-container").appendChild(app.canvas);
   
   //bg
-  const textureBg = await Assets.load("/assets/img/bg.png");
+  const textureBg = await Assets.load(bgUrl);
   const bg = new Sprite(textureBg);
   bg.width = app.screen.width;
   bg.height = app.screen.height;
+  
   app.stage.addChild(bg);
   
-  // Load the bunny texture
-  const texture = await Assets.load("/assets/img/diglett-hide.svg");
-  // Create a bunny Sprite
-  const diglett = new Sprite(texture);
+  //diglett
+  const diglettHiddenImg = await  Assets.load(diglettUrl);
+  const diglettHiddenSprite = Object.assign( new Sprite(diglettHiddenImg), {
+    anchor: { x: 0.5, y: 0.5 },
+    position: { x: app.screen.width/2, y: app.screen.height/2 },
+    scale: { x: 0.5, y: 0.5 }
+  });
 
-  // Center the sprite's anchor point
-  diglett.anchor.set(0.5);
-
-  // Move the sprite to the center of the screen
-  diglett.position.set(app.screen.width / 2, app.screen.height / 2);
-
-  // Add the bunny to the stage
-  app.stage.addChild(diglett);
-
-  
+  app.stage.addChild(diglettHiddenSprite);
 })();
