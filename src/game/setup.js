@@ -3,8 +3,7 @@ import { Container } from 'pixi.js';
 import { shuffleArray } from '../helpers/index.js';
 import { createBackground } from '../entities/background.js';
 import { addingDiglets } from './addingDiglets.js';
-import { hidingDiglett } from './hidingDiglett.js';
-import { visiblingDiglett } from './visiblingDiglett.js';
+import { diglettManager } from './diglettManager.js'
 
 export async function setupGame(app) {
 	await createBackground(app);
@@ -24,11 +23,5 @@ export async function setupGame(app) {
 	// Перемешиваем массив один раз
 	const shuffledDigletts = shuffleArray([...digletts]);
 	
-	// Применяем анимацию появления
-	shuffledDigletts.forEach((child, index) => {
-		visiblingDiglett(child, index);
-	});
-	
-	// Добавляем обработчики скрытия
-	hidingDiglett(shuffledDigletts);
+	diglettManager(shuffledDigletts);
 }
