@@ -1,7 +1,7 @@
 import { Container } from 'pixi.js';
 
-import { createBasket } from '../entities/basket.js'
-import { createDiglett } from '../entities/diglett.js'
+import { createBasket } from '../entities/basket.js';
+import { createDiglett } from '../entities/diglett.js';
 
 export const addingDiglets = async (diglettContainer, app) => {
 	for (let i = 0; i < 3; i++) {

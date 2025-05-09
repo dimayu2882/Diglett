@@ -1,10 +1,10 @@
-import { Container } from "pixi.js";
+import { Container } from 'pixi.js';
 
-import { shuffleArray } from '../helpers/index.js'
+import { shuffleArray } from '../helpers/index.js';
 import { createBackground } from '../entities/background.js';
-import { addingDiglets } from './addingDiglets.js'
+import { addingDiglets } from './addingDiglets.js';
 import { hidingDiglett } from './hidingDiglett.js';
-import { visiblingDiglett } from './visiblingDiglett.js'
+import { visiblingDiglett } from './visiblingDiglett.js';
 
 export async function setupGame(app) {
 	await createBackground(app);

@@ -1,5 +1,5 @@
-import url from '@img/diglett.png'
-import { Assets, Sprite } from 'pixi.js'
+import url from '@img/diglett.png';
+import { Assets, Sprite } from 'pixi.js';
 
 export async function createDiglett() {
 	const texture = await Assets.load(url);

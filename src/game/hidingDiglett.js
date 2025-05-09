@@ -9,11 +9,11 @@ export const hidingDiglett = (array) => {
 				gsap.to(diglettEvent.scale, {
 					y: 0,
 					duration: 0.8,
-					ease: "back.out(1)"
+					ease: 'back.out(1)'
 				});
 				
 				diglettEvent.isVisible = false;
 			}
 		});
-	})
-}
+	});
+};

@@ -1,5 +1,5 @@
-import url from '@img/basket.png'
-import { Assets, Sprite } from 'pixi.js'
+import url from '@img/basket.png';
+import { Assets, Sprite } from 'pixi.js';
 
 export async function createBasket() {
 	const texture = await Assets.load(url);
