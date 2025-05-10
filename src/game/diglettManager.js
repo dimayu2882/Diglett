@@ -1,7 +1,9 @@
 import gsap from 'gsap';
-import { user } from '../entities/user.js'
+import { user } from '../entities/user.js';
+import { changeStatusBar } from './changeStatusBar.js';
+import { createStatusBar } from '../entities/statusBar.js';
 
-export const diglettManager = (array) => {
+export const diglettManager = (array, app) => {
 	array.forEach((child, index) => {
 		const diglett = child.children.find(item => item.label === 'diglett');
 		
@@ -35,9 +37,9 @@ export const diglettManager = (array) => {
 			if (diglett.isVisible) {
 				hideDiglett();
 			}
-		}, 3500 + (index * 500)); // Увеличиваем время на 500ms для каждого элемента
+		}, 3500 + (index * 500));
 		
-		child.on('pointerdown', (event) => {
+		child.on('pointerdown', async (event) => {
 			const target = event.currentTarget;
 			const diglettEvent = target.children.find(item => item.label === 'diglett');
 			
@@ -51,10 +53,11 @@ export const diglettManager = (array) => {
 				});
 				
 				diglettEvent.isVisible = false;
-				user.score = user.score + 10
+				user.score = user.score + 10;
+				
+				const progressFill = await createStatusBar(app);
+				changeStatusBar(progressFill);
 			}
-			
-			console.log(user);
 		});
 	});
 };

@@ -1,15 +1,24 @@
-import js from "@eslint/js";
-import prettier from "eslint-plugin-prettier/recommended";
+import { defineConfig } from 'eslint-define-config';
 
-export default [
-  { ignores: ["dist"] },
-  {
-    extends: [js.configs.recommended, prettier],
-    files: ["**/*.{js,jsx}"],
-    languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
+export default defineConfig({
+  languageOptions: {
+    parserOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
     },
-    rules: {},
   },
-];
+  rules: {
+    'no-console': 'warn',
+    'eqeqeq': ['error', 'always'],
+    'quotes': ['error', 'single'],
+    // добавьте другие правила
+  },
+  overrides: [
+    {
+      files: ['*.js', '*.jsx', '*.ts', '*.tsx'],
+      rules: {
+        // специфичные правила для этих файлов
+      },
+    },
+  ],
+});
