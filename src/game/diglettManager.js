@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import { user } from '../entities/user.js'
 
 export const diglettManager = (array) => {
 	array.forEach((child, index) => {
@@ -24,6 +25,7 @@ export const diglettManager = (array) => {
 				delay: index * 0.5,
 			});
 			diglett.isVisible = false;
+			user.heart--;
 		}
 		
 		showDiglett();
@@ -49,7 +51,10 @@ export const diglettManager = (array) => {
 				});
 				
 				diglettEvent.isVisible = false;
+				user.score = user.score + 10
 			}
+			
+			console.log(user);
 		});
 	});
 };
